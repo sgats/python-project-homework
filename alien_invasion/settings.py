@@ -6,7 +6,7 @@ class Settings:
         # 屏幕设置
         self.screen_width = 800
         self.screen_height = 600
-        self.bg_color = (255, 255, 255)
+        self.bg_color = (230, 230, 230)
         # 设置飞船的移动速度
         self.ship_speed = 1.5
         # 添加子弹的设置
