@@ -16,5 +16,7 @@ class Settings:
         self.bullet_color = (60, 60, 60)
         """限制子弹只能在屏幕上最多存在10个"""
         self.bullets_allowed = 10
+        """设置外星人的速度"""
+        self.alien_speed = 1.0
 
 

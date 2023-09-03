@@ -37,6 +37,8 @@ class AlienInvasion:
             # 调用飞船移动的方法
             self.ship.update()
             self._update_bullets()
+            """更新外星人位置"""
+            self._update_aliens()
             # 每次循环的时候都重绘屏幕
             self._update_screen()
             self.clock.tick(60)
@@ -108,8 +110,6 @@ class AlienInvasion:
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
 
-
-
     def _update_bullets(self):
         """更新子弹的位置"""
         self.bullets.update()
@@ -130,6 +130,10 @@ class AlienInvasion:
         self.aliens.draw(self.screen)
         # 让最近绘制的屏幕可见
         pygame.display.flip()
+
+    def _update_aliens(self):
+        """更新所有外星人的位置"""
+        self.aliens.update()
 
 
 if __name__ == '__main__':
