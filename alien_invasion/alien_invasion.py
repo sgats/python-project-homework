@@ -35,6 +35,8 @@ class AlienInvasion:
             # 侦听键盘和鼠标事件
             self._check_events(self)
             # 调用飞船移动的方法
+
+
             self.ship.update()
             self._update_bullets()
             """更新外星人位置"""
