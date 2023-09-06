@@ -111,6 +111,19 @@ class AlienInvasion:
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
 
+    def _check_fleet_edges(self):
+        """在有外星人到达边缘时采取响应的措施"""
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        """将整个外星舰队向下移动，并改变它们的方向"""
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
+
     def _update_bullets(self):
         """更新子弹的位置"""
         self.bullets.update()
@@ -133,6 +146,8 @@ class AlienInvasion:
         pygame.display.flip()
 
     def _update_aliens(self):
+        """检查是否有外星人位于屏幕边缘，并更新整个外星舰队的位置"""
+        self._check_fleet_edges()
         """更新所有外星人的位置"""
         self.aliens.update()
 
