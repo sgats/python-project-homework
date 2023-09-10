@@ -60,7 +60,15 @@ class RainDrop:
                 print("打印雨滴边距", raining.rect)
                 if raining.rect.top >= self.screen.get_height():
                     self.rains.remove(raining)
+                    # """移除一行雨滴之后，在上面重新追加一行雨滴"""
+                    # self.rains.add(raining)
+                    # self._update_screen()
                 print("查看雨滴是否有变少", len(self.rains))
+
+            if not self.rains:
+                """重新新建一个雨滴舰队"""
+                self.rains.empty()
+                self._create_fleet()
 
     @staticmethod
     def _check_events():
