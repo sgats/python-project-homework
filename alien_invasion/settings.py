@@ -8,7 +8,7 @@ class Settings:
         self.screen_height = 800
         self.bg_color = (230, 230, 230)
         # 设置飞船的移动速度
-        self.ship_speed = 2.0
+        self.ship_speed = 3.0
         # 添加子弹的设置
         self.bullet_speed = 2.5
         self.bullet_width = 3
@@ -19,7 +19,7 @@ class Settings:
         """设置外星人的速度"""
         self.alien_speed = 1.0
         """设置外星人向下移动"""
-        self.fleet_drop_speed = 10
+        self.fleet_drop_speed = 5
         """fleet_direction 为 1表示向右移动， 为-1表示向左移动"""
         self.fleet_direction = 1
 

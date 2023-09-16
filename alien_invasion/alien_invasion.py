@@ -141,7 +141,6 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
 
-
     def _update_screen(self):
         """更新屏幕上的图像，并切换到新屏幕"""
         self.screen.fill(self.settings.bg_color)
@@ -160,6 +159,9 @@ class AlienInvasion:
         self._check_fleet_edges()
         """更新所有外星人的位置"""
         self.aliens.update()
+        """检查外星人和飞船之间的碰撞"""
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("Ship hit!!")
 
 
 if __name__ == '__main__':
