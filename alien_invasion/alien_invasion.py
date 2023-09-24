@@ -69,20 +69,24 @@ class AlienInvasion:
                 self._check_play_button(mouse_pos)
 
     def _check_play_button(self, mouse_pos):
+        """检查play按钮"""
         """在玩家单机play按钮时开始新游戏"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            """重置游戏的统计信息"""
-            self.stats.reset_stats()
-            self.game_active = True
-            """隐藏光标"""
-            pygame.mouse.set_visible(False)
-            """清空外星人列表和子弹列表"""
-            self.bullets.empty()
-            self.aliens.empty()
-            """创建一个新的外星舰队，并将飞船放在屏幕底部的中央"""
-            self._create_fleet()
-            self.ship.center_ship()
+            self._start_game()
+
+    def _start_game(self):
+        """重置游戏的统计信息"""
+        self.stats.reset_stats()
+        self.game_active = True
+        """隐藏光标"""
+        pygame.mouse.set_visible(False)
+        """清空外星人列表和子弹列表"""
+        self.bullets.empty()
+        self.aliens.empty()
+        """创建一个新的外星舰队，并将飞船放在屏幕底部的中央"""
+        self._create_fleet()
+        self.ship.center_ship()
 
     def _check_keydown_events(self, event):
         """响应按下"""
