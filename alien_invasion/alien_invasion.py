@@ -73,6 +73,8 @@ class AlienInvasion:
         """在玩家单机play按钮时开始新游戏"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
+            """还原游戏设置"""
+            self.settings.initialize_dynamic_settings()
             self._start_game()
 
     def _start_game(self):
@@ -172,6 +174,7 @@ class AlienInvasion:
             """删除现有的子弹，并创建一个新的外星舰队"""
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _update_screen(self):
         """更新屏幕上的图像，并切换到新屏幕"""
