@@ -7,6 +7,7 @@ from alien import Alien
 from time import sleep
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 
 
 class AlienInvasion:
@@ -26,6 +27,7 @@ class AlienInvasion:
         pygame.display.set_caption("打外星人游戏")
         """创建一个用来存储游戏统计信息的实例"""
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
         self.ship = Ship(self)
         """创建存储子弹的编组"""
         self.bullets = pygame.sprite.Group()
@@ -186,6 +188,8 @@ class AlienInvasion:
         self.ship.bitme()
         # 调用外星人
         self.aliens.draw(self.screen)
+        """显示得分"""
+        self.sb.show_score()
         """如果游戏处于非活跃状态，就绘制play按钮"""
         if not self.game_active:
             self.play_button.draw_button()
