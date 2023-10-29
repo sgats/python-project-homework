@@ -32,9 +32,12 @@ class Settings:
         self.alien_speed = 1.0
         """fleet_direction 为 1表示向右移动， 为-1表示向左移动"""
         self.fleet_direction = 1
+        "记分设置"
+        self.alien_points = 50
 
     def increase_speed(self):
         """提高速度设置的值"""
         self.ship_speed *= self.speedup_scale
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
+
