@@ -78,6 +78,7 @@ class AlienInvasion:
             """还原游戏设置"""
             self.settings.initialize_dynamic_settings()
             self._start_game()
+            self.sb.prep_score()
 
     def _start_game(self):
         """重置游戏的统计信息"""
@@ -173,7 +174,8 @@ class AlienInvasion:
         """检查是否有子弹击中外星人，如果是，就删除响应的子弹和外星人"""
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
 
         if not self.aliens:

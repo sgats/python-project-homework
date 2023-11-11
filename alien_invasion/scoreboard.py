@@ -6,6 +6,8 @@ class Scoreboard:
 
     def __init__(self, ai_game):
         """初始化显示得分涉及的属性"""
+        self.score_image = None
+        self.score_rect = None
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings
