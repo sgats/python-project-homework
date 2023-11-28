@@ -6,6 +6,8 @@ class Scoreboard:
 
     def __init__(self, ai_game):
         """初始化显示得分涉及的属性"""
+        self.level_rect = None
+        self.level_image = None
         self.high_score_image = None
         self.high_score_rect = None
         self.score_image = None
@@ -22,6 +24,7 @@ class Scoreboard:
         """准备初始得分图像和最高分图像"""
         self.prep_score()
         self.prep_high_score()
+        self.prep_level()
 
     def prep_score(self):
         """将得分渲染为图像"""
@@ -49,9 +52,19 @@ class Scoreboard:
         """在屏幕上显示得分"""
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
+        self.screen.blit(self.level_image,self.level_rect)
 
     def check_high_score(self):
         """检查是否诞生了最高分"""
         if self.stats.score > self.stats.high_score:
             self.stats.high_score = self.stats.score
             self.prep_high_score()
+
+    def prep_level(self):
+        """将等级渲染为图像"""
+        level_str = str(self.stats.level)
+        self.level_image = self.font.render(level_str, True, self.text_color, self.settings.bg_color)
+        """将等级放在得分下面"""
+        self.level_rect = self.level_image.get_rect()
+        self.level_rect.right =- self.score_rect.right
+        self.level_rect.top = self.screen_rect.bottom + 10

@@ -79,6 +79,7 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             self._start_game()
             self.sb.prep_score()
+            self.sb.prep_level()
 
     def _start_game(self):
         """重置游戏的统计信息"""
@@ -184,6 +185,10 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # 提高等级
+            self.stats.level += 1
+            self.sb.prep_level()
 
     def _update_screen(self):
         """更新屏幕上的图像，并切换到新屏幕"""

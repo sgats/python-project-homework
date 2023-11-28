@@ -2,6 +2,7 @@ class GameStats:
     """跟踪游戏的统计信息"""
     def __init__(self, ai_game):
         """初始化统计信息"""
+        self.level = None
         self.ships_left = None
         self.score = None
         self.settings = ai_game.settings
@@ -12,3 +13,5 @@ class GameStats:
         """初始化在游戏运行期间可能变化的统计信息"""
         self.ships_left = self.settings.ship_limit
         self.score = 0
+        """每次开始新游戏的时候都重置等级"""
+        self.level = 1
